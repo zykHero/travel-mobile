@@ -1,11 +1,6 @@
-import React, { FC, RefObject,useState } from 'react'
+import { FC, RefObject,useState } from 'react'
 import { NavBar,Space, Form, Input, DatePicker, Button, Cascader } from 'antd-mobile'
-import {
-  Route,
-  useNavigate,
-  useLocation,
-  MemoryRouter as Router,
-} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs'
 import type { DatePickerRef } from 'antd-mobile/es/components/date-picker'
 import {AreaData} from '../core/AreaData';

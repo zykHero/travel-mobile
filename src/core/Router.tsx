@@ -1,6 +1,4 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { createHashRouter, Router } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import App from "../App";
 import { Diary } from "../component/diary";
 import { Footmark } from "../component/footmark";

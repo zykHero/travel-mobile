@@ -6,6 +6,8 @@ import {
   useLocation,
   MemoryRouter as Router,
 } from 'react-router-dom';
+import { FootMarkMap } from './footMarkMap';
+
 const Footmark: FC =()=> {
   const navigate =useNavigate();
   const addFootmark = ()=>{
@@ -14,6 +16,7 @@ const Footmark: FC =()=> {
   return (
     <div>
         <Button color='primary' fill='solid' onClick={()=>{addFootmark()}}>添加足迹</Button>
+        <FootMarkMap />
     </div>
     
     // 按钮
