@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const BMapGL: any = window.BMapGL
+const BMapGL: any = window.BMapGL;
 const createMap = () => {
   const map = new BMapGL.Map("map-container");
   const centerPoint = new BMapGL.Point(116.404, 39.915);

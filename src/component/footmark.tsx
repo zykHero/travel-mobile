@@ -18,9 +18,6 @@ const Footmark: FC =()=> {
         <Button color='primary' fill='solid' onClick={()=>{addFootmark()}}>添加足迹</Button>
         <FootMarkMap />
     </div>
-    
-    // 按钮
-    //地图
   );
 }
 

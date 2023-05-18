@@ -4,9 +4,12 @@ import { Diary } from "../component/diary";
 import { Footmark } from "../component/footmark";
 import { Me } from "../component/me";
 import {AddFootmark} from "../component/addFootmark";
+import { ModifyPassCode } from '../component/modifyPassCode';
+
 const router = createHashRouter([
     {
       path: '/',
+      //todo 重定向到 footmark 路由
       element: <App />,
       children: [
         {
@@ -23,6 +26,9 @@ const router = createHashRouter([
         },{
             path: "me",
             element: <Me />
+        }, {
+          path: 'config',
+          element: <ModifyPassCode />
         }
       ]
     }
