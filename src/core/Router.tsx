@@ -9,9 +9,12 @@ import { ModifyPassCode } from '../component/modifyPassCode';
 const router = createHashRouter([
     {
       path: '/',
-      //todo 重定向到 footmark 路由
       element: <App />,
       children: [
+        {
+          path: "",
+          element: <Footmark />,
+        },
         {
           path: "footmark",
           element: <Footmark />,

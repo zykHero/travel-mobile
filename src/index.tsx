@@ -7,10 +7,16 @@ import { router } from './core/Router';
   const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
   );
+
+  const SpinnerOfDoom = () =>{
+    return <>
+      加载中...
+    </>
+  }
   
   root.render(
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}  fallbackElement={<SpinnerOfDoom />}/>
     </React.StrictMode>
   );
   
