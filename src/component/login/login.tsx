@@ -32,7 +32,7 @@ const Login: FC = () => {
       <div className='login-form'>
           <Form layout='horizontal' >
           <Form.Item label='用户名' name='username'>
-            <Input placeholder='请输入用户名' clearable />
+            <Input placeholder='请输入用户名' autoComplete='false' clearable />
           </Form.Item>
           <Form.Item
             label='密码'
