@@ -13,9 +13,6 @@ const getUserInfo = ()=>{
   return {image: 'xxxx', name: 'zyk'};
 }
 
-const logout = ()=>{
-  alert('退出系统');
-}
 
 
 
@@ -23,6 +20,13 @@ const logout = ()=>{
 const Me: FC =()=> {
     const {image, name}  = getUserInfo();
     const navigate = useNavigate();
+    const logout = ()=>{
+      // alert('退出系统');
+      //todo  下发接口
+      navigate('/login');
+      
+    }
+    
     return (
         // 头像 + 名称+描述
         <>

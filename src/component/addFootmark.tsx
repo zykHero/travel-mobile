@@ -1,9 +1,10 @@
-import { FC, RefObject,useState } from 'react'
-import { NavBar,Space, Form, Input, DatePicker, Button, Cascader, TextArea } from 'antd-mobile'
+import { FC, RefObject, useState } from 'react'
+import { NavBar, Space, Form, Input, DatePicker, Button, Cascader, TextArea } from 'antd-mobile'
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs'
 import type { DatePickerRef } from 'antd-mobile/es/components/date-picker'
-import {AreaData} from '../core/AreaData';
+import { AreaData } from '../core/AreaData';
+import { HttpAPI, AddFootMarkReqParams } from './api/http-api';
 
 
 interface AddressFieldProps {
@@ -11,9 +12,8 @@ interface AddressFieldProps {
   onChange?: (value: string[]) => void
 }
 
-const SelectAddress = ({value,onChange}:AddressFieldProps)=> {
+const SelectAddress = ({ value, onChange }: AddressFieldProps) => {
   const [visible, setVisible] = useState(false);
-  // const [value, setValue] = useState<string[]>([]);
   const options = AreaData;
   return (
     <Space align='center'>
@@ -28,7 +28,7 @@ const SelectAddress = ({value,onChange}:AddressFieldProps)=> {
         onClose={() => {
           setVisible(false)
         }}
-        onSelect={(val:string[], extend) => {
+        onSelect={(val: string[], extend) => {
           onChange?.(val)
         }}
       >
@@ -44,26 +44,24 @@ const SelectAddress = ({value,onChange}:AddressFieldProps)=> {
   )
 }
 
-
-
-
 const AddFootmark: FC = () => {
   const [form] = Form.useForm();
-  const backPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const BackPage = () => {
     navigate('/footmark');
   };
-  
-
-  const onFinish = (values: any) => {
-    console.log(values)
-    //todo  统一下发参数类型，对于undefined进行处理
-    // todo 下发接口
+  const onFinish = (values: AddFootMarkReqParams) => {
+    new HttpAPI().addFootMarkHttp(values).then(res=>{
+      console.log('成功了',res);
+      BackPage();
+    }).catch(error=>{
+      console.log(error)
+    })
   }
 
   return (
     <>
-      <NavBar back='返回' onBack={backPage}>添加足迹</NavBar>
+      <NavBar back='返回' onBack={BackPage}>添加足迹</NavBar>
       <Form name='form' form={form} onFinish={onFinish}
         footer={
           <Button block type='submit' color='primary' size='large'>提交</Button>
@@ -78,11 +76,8 @@ const AddFootmark: FC = () => {
             {value => value ? dayjs(value).format('YYYY-MM-DD') : '请选择日期'}
           </DatePicker>
         </Form.Item>
-        <Form.Item name='address' label='地址' rules={[{ required: true }]}>
-          <SelectAddress  value={['']}/>
-        </Form.Item>
-        <Form.Item name='partner' label='同行好友'>
-          <Input placeholder='留下陪你一起旅行的驴友名字吧~' />
+        <Form.Item name='address' label='城市' rules={[{ required: true }]}>
+          <SelectAddress value={['']} />
         </Form.Item>
         <Form.Item name='notes' label='备注'>
           <TextArea showCount placeholder='留下些故事吧~' maxLength={250} />

@@ -5,7 +5,9 @@ import { Footmark } from "../component/footmark";
 import { Me } from "../component/me";
 import {AddFootmark} from "../component/addFootmark";
 import { ModifyPassCode } from '../component/modifyPassCode';
-
+import { EditDiary } from '../component/edit-diary';
+import { Login } from '../component/login/login';
+ 
 const router = createHashRouter([
     {
       path: '/',
@@ -13,7 +15,11 @@ const router = createHashRouter([
       children: [
         {
           path: "",
-          element: <Footmark />,
+          element: <Login />,
+        },
+        {
+          path: "login",
+          element: <Login />,
         },
         {
           path: "footmark",
@@ -26,7 +32,10 @@ const router = createHashRouter([
         {
             path: "diary",
             element: <Diary />
-        },{
+        }, {
+            path: 'edit-diary',
+            element: <EditDiary />
+        }, {
             path: "me",
             element: <Me />
         }, {
